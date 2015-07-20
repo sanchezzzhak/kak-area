@@ -1,9 +1,11 @@
 Area content widgets for Yii2
 ================
 The widget can, Duplicate area by clicking the button
+Preview
+-----------
+<img src="https://lh3.googleusercontent.com/-G6BBKhyQqVg/Va0CmtW6v-I/AAAAAAAAACg/FnU_Qc9DyiU/s512-Ic42/areaPreview.png">
 Installation
 ------------
-
 The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
 
 Either run
@@ -34,14 +36,14 @@ Once the extension is installed, simply use it in your code by  :
         ]
 ]);?>
     <div class="row form-group">
+        <div class="col-xs-1">
+            <button type="button" class="btn btn-danger" role="area.remove" >-</button>
+        </div>    
         <div class="col-xs-4">
             <input type="text" name="params[key][]"  placeholder="Key"  value="{%=o.key%}" class="form-control"/>
         </div>
         <div class="col-xs-4">
             <input type="text" name="params[value][]" placeholder="Value"  value="{%=o.value%}" class="form-control"/>
-        </div>
-        <div class="col-xs-4">
-            <button type="button" class="btn btn-danger" role="area.remove" >-</button>
         </div>
     </div>
 <?php kak\widgets\area\Area::end();?>

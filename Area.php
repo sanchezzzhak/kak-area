@@ -1,6 +1,7 @@
 <?php
 
 namespace kak\widgets\area;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 
 class Area extends \yii\base\Widget
@@ -11,6 +12,7 @@ class Area extends \yii\base\Widget
      */
     public $options = [];
     public $itemOptions = [];
+    public $buttonOptions = [];
 
     /** @var array */
     public $label;
@@ -40,10 +42,12 @@ class Area extends \yii\base\Widget
 
     protected function renderButtonAdd()
     {
-        $btn = Html::button('+',['class' => 'btn btn-info',
+        Html::addCssClass($this->buttonOptions,'btn');
+        $this->buttonOptions = ArrayHelper::merge($this->buttonOptions,[
             'role' => 'area.add',
             'data-tmpl' => $this->options['id']
         ]);
+        $btn = Html::button('+', $this->buttonOptions);
         echo Html::tag('div', $btn . ' '. Html::tag('label', $this->label ) ,[ 'class' => 'form-group' ]);
     }
 
