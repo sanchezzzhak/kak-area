@@ -4,6 +4,10 @@
     "type": "library",
     "keywords": ["yii2","Area container","kak area"],
     "license": "MIT",
+    "support": {
+        "issues": "https://github.com/sanchezzzhak/kak-area/issues?state=open",
+        "source": "https://github.com/sanchezzzhak/kak-area"
+    },
     "authors": [
         {
             "name": "Tutik Alexsandr",
@@ -13,7 +17,6 @@
     "require": {
         "yiisoft/yii2": "*",
         "bower-asset/blueimp-tmpl": "2.5.4"
-
     },
     "extra": {
         "asset-installer-paths": {
