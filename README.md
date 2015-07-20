@@ -1,7 +1,6 @@
-DubleBox widgets
+Area content widgets for Yii2
 ================
-DoubleBox widgets for Yii2
-
+The widget can, Duplicate area by clicking the button
 Installation
 ------------
 
@@ -10,22 +9,23 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require --prefer-dist dublebox/kak-dublebox "*"
+php composer.phar require --prefer-dist kak/area "*"
 ```
 
 or add
 
 ```
-"dublebox/kak-dublebox": "*"
+"kak/area": "*"
 ```
 
 to the require section of your `composer.json` file.
 
-
 Usage
 -----
-
 Once the extension is installed, simply use it in your code by  :
-
 ```php
-<?= \kak\widgets\AutoloadExample::widget(); ?>```
+<?php \kak\widgets\Area::begin(); ?>
+  <div> ... Content for duplication ... {actions} </div>
+<?php \kak\widgets\Area::end(); ?>
+
+```

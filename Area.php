@@ -14,6 +14,8 @@ class Area extends \yii\bootstrap\Widget
     /** @var array */
     public $data = [];
 
+    public $tmplRemove = '<button type="button" class="btn btn-danger">-</button>';
+
 
     public function init()
     {
