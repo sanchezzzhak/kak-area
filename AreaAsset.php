@@ -8,18 +8,13 @@ use yii\web\AssetBundle;
  * @package kak\widgets\area
  * @docs https://github.com/blueimp/JavaScript-Templates
  */
-class TmplAsset extends AssetBundle
+class AreaAsset extends AssetBundle
 {
-    public $sourcePath = '@bower/blueimp-tmpl';
+    public $sourcePath = '@vendor/kak/area/assets';
     public $depends = [
         'yii\web\JqueryAsset'
     ];
     public $js = [
-        'js\tmpl.min.js'
+        'area.js'
     ];
-
-    public function init()
-    {
-        parent::init();
-    }
 }
