@@ -15,7 +15,7 @@ class TmplAsset extends AssetBundle
         'yii\web\JqueryAsset'
     ];
     public $js = [
-        'js\tmpl.min.js'
+        'js/tmpl.min.js'
     ];
 
     public function init()
