@@ -16,6 +16,7 @@ class Area extends \yii\base\Widget
 
     /** @var array */
     public $label;
+    public $templateButtonAdding = '{button} {label}';
     public $items = [];
 
     public function init()
@@ -47,8 +48,12 @@ class Area extends \yii\base\Widget
             'role' => 'area.add',
             'data-tmpl' => $this->options['id']
         ]);
-        $btn = Html::button('+', $this->buttonOptions);
-        echo Html::tag('div', $btn . ' '. Html::tag('label', $this->label ) ,[ 'class' => 'form-group' ]);
+
+        $templateButtonAdding = strtr($this->templateButtonAdding,[
+            '{button}' => Html::button('+', $this->buttonOptions),
+            '{label}'  => Html::tag('label', $this->label )
+        ]);
+        echo Html::tag('div',  $templateButtonAdding ,[ 'class' => 'form-group' ]);
     }
 
     public function getAreaId()
