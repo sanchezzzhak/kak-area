@@ -1,6 +1,7 @@
 <?php
 
 namespace kak\widgets\area;
+
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 
@@ -25,12 +26,12 @@ class Area extends \yii\base\Widget
         $this->initDefaultOptions();
         $this->renderButtonAdd();
 
-        echo Html::beginTag('script',[
+        echo Html::beginTag('script', [
             'id' => $this->options['id'],
             'type' => 'text/x-tmpl'
         ]);
-        $this->getView()->beginBlock( $this->getAreaId() ,true);
-            echo Html::beginTag('div',$this->itemOptions);
+        $this->getView()->beginBlock($this->getAreaId(), true);
+        echo Html::beginTag('div', $this->itemOptions);
     }
 
     protected function initDefaultOptions()
@@ -38,44 +39,45 @@ class Area extends \yii\base\Widget
         if (!isset($this->options['id'])) {
             $this->options['id'] = $this->getId();
         }
-        Html::addCssClass($this->itemOptions,'areaItem');
+        Html::addCssClass($this->itemOptions, 'areaItem');
     }
 
     protected function renderButtonAdd()
     {
-        Html::addCssClass($this->buttonOptions,'btn');
-        $this->buttonOptions = ArrayHelper::merge($this->buttonOptions,[
+        Html::addCssClass($this->buttonOptions, 'btn');
+        $this->buttonOptions = ArrayHelper::merge($this->buttonOptions, [
             'role' => 'area.add',
             'data-tmpl' => $this->options['id']
         ]);
 
-        $templateButtonAdding = strtr($this->templateButtonAdding,[
+        $templateButtonAdding = strtr($this->templateButtonAdding, [
             '{button}' => Html::button('+', $this->buttonOptions),
-            '{label}'  => Html::tag('label', $this->label )
+            '{label}' => Html::tag('label', $this->label)
         ]);
-        echo Html::tag('div',  $templateButtonAdding ,[ 'class' => 'form-group' ]);
+        echo Html::tag('div', $templateButtonAdding, ['class' => 'form-group']);
     }
 
     public function getAreaId()
     {
-       return 'areaId' . $this->options['id'];
+        return 'areaId' . $this->options['id'];
     }
 
     public function run()
     {
-            echo Html::endTag('div');
+        echo Html::endTag('div');
         $this->getView()->endBlock();
         echo Html::endTag('script');
-        echo Html::beginTag('div',[
+        echo Html::beginTag('div', [
             'id' => $this->getAreaId()
         ]);
         foreach ($this->items as $item) {
             $keys = array_keys($item);
             $clip = (string)$this->getView()->blocks[$this->getAreaId()];
             foreach ($keys as $key) {
-                $clip = str_replace('{%=o.'.$key.'%}',$item[$key],$clip);
+                $value = Html::encode($item[$key]);
+                $clip = str_replace('{%=o.' . $key . '%}', $value, $clip);
             }
-            $clip= preg_replace('#\{\%\=o(.*)\%\}#ism','',$clip);
+            $clip = preg_replace('#\{\%\=o(.*)\%\}#ism', '', $clip);
             echo $clip;
         }
 
