@@ -6,19 +6,8 @@ use yii\base\Model;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 
-/**
- * use example
- */
-/*
-```php
-
-
-
-
-
-
-```;
- */
+use kak\widgets\area\bundles\TmplAsset;
+use kak\widgets\area\bundles\AreaAsset;
 
 
 /**
@@ -141,7 +130,7 @@ class Area extends \yii\base\Widget
         if($this->viewItem instanceof \Closure){
             return call_user_func($this->viewItem, $params, $this);
         }
-        return $this->render($this->viewItem, $params);
+        return $this->getView()->render($this->viewItem, $params);
     }
 
     /**
@@ -163,6 +152,9 @@ class Area extends \yii\base\Widget
 
     public function run()
     {
+        TmplAsset::register($this->getView());
+        AreaAsset::register($this->getView());
+
         echo $this->renderTemplateItemForm();
         echo Html::endTag('div');
 
@@ -184,7 +176,6 @@ class Area extends \yii\base\Widget
         }
         echo Html::endTag('div');
 
-        TmplAsset::register($this->getView());
-        AreaAsset::register($this->getView());
+
     }
 }

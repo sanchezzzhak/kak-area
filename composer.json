@@ -18,15 +18,9 @@
         "yiisoft/yii2": "*",
         "bower-asset/blueimp-tmpl": "2.5.4"
     },
-    "extra": {
-        "asset-installer-paths": {
-            "npm-asset-library": "vendor/npm",
-            "bower-asset-library": "vendor/bower"
-        }
-    },
     "autoload": {
         "psr-4": {
-            "kak\\widgets\\area\\": ""
+            "kak\\widgets\\area\\": "src"
         }
     }
 }

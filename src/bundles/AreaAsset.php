@@ -1,5 +1,5 @@
 <?php
-namespace kak\widgets\area;
+namespace kak\widgets\area\bundles;
 
 use yii\web\AssetBundle;
 
