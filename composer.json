@@ -16,7 +16,7 @@
     ],
     "require": {
         "yiisoft/yii2": "*",
-        "bower-asset/blueimp-tmpl": "2.5.4"
+        "npm-asset/blueimp-tmpl": "3.14.0"
     },
     "extra": {
         "asset-installer-paths": {

@@ -10,7 +10,7 @@ use yii\web\AssetBundle;
  */
 class TmplAsset extends AssetBundle
 {
-    public $sourcePath = '@bower/blueimp-tmpl';
+    public $sourcePath = '@npm/blueimp-tmpl';
     public $depends = [
         'yii\web\JqueryAsset'
     ];
