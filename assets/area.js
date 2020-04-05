@@ -28,6 +28,7 @@
    */
   var kakArea = function (element, options) {
 	this.element = $(element);
+	this.container = $('#' + options.areaId);
 	this.options = options;
 	this.init();
   };
@@ -40,7 +41,7 @@
 	},
 
 	create: function () {
-	  var isInit = element.data('kak-area-init');
+	  var isInit = this.element.data('kak-area-init');
 	  if (isInit) {
 		return;
 	  }
@@ -55,7 +56,7 @@
 		: $.proxy(this.onInsertItem, this)
 	  );
 
-	  element.data('kak-area-init', true);
+	  this.element.data('kak-area-init', true);
 	},
 
 	destroy: function () {
@@ -67,7 +68,7 @@
 
 
 	getCountTotalItems: function () {
-	  return this.element.find(AREA_ITEM_CLASS).length;
+	  return this.container.find(AREA_ITEM_CLASS).length;
 	},
 
 	updateItem: function (item) {
@@ -107,15 +108,13 @@
 		return;
 	  }
 	  var target = $(event.currentTarget);
-	  var templId = this.element.data('tmpl');
-
-	  var item = $(tmpl(tmplId, odata));
+	  var item = $(tmpl(this.options.tmplId, {}));
 	  this.element.trigger(EVENTS.beforeInsert, [item]);
 
 	  if (this.options.insertPosition === 'top') {
-		this.element.prepend(item);
+		this.container.prepend(item);
 	  } else {
-		this.element.append(item);
+		this.container.append(item);
 	  }
 
 	  this.element.trigger(EVENTS.afterInsert, [item]);
